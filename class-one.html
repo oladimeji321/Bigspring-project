@@ -90,8 +90,11 @@
             padding: 35px;   
         }
         .forth-div {
-            width: 500px;
+            max-width: 80%;
+            height: 300px;
             margin: 100px;
+            display: flex;
+            justify-content: space-between;
         }
         .firth-div {
             width: 500px;
@@ -130,6 +133,19 @@
             text-decoration: none;
             color: black;
         }
+        .dot, .dot2 {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active {
+            background-color: #717171;
+        }
+        .slider, .slider2 {display: none;}
     </style>
 </head>
 <body>
@@ -186,15 +202,48 @@
             </div>
         </div>
         <div class="forth-div">
-            <h1 style="font-size: 30px;">It is the most advanced digital marketing and it company.</h1>
-            <p style="color: gray;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat.</p>
-            <div class="arrow-div">
-                <span>Check it out</span>
-                <img style="width: 20px; color: rgb(45, 120, 45); height: 20px;" src="https://bigspring-light-nextjs.vercel.app/images/arrow-right.svg" alt="">
+            <div>
+                <h1 style="font-size: 30px;">It is the most advanced digital marketing and it company.</h1>
+                <p style="color: gray;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat.</p>
+                <div class="arrow-div">
+                    <span>Check it out</span>
+                    <img style="width: 20px; color: rgb(45, 120, 45); height: 20px;" src="https://bigspring-light-nextjs.vercel.app/images/arrow-right.svg" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="slider">
+                    <img width="500" src="https://bigspring-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fservice-slide-1.png&w=1200&q=75" alt="">
+                </div>
+                <div class="slider">
+                    <img width="500" src="https://bigspring-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fservice-slide-2.png&w=1200&q=75" alt="">
+                </div>
+                <div class="slider">
+                    <img width="500" src="https://bigspring-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fservice-slide-3.png&w=1200&q=75" alt="">
+                </div>
+                <div style="text-align:center">
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                  </div>
             </div>
         </div>
         <div class="sideimg-div">
-            <div style="width: 500px;"></div>
+            <div style="margin-left: 100px;">
+                <div class="slider2">
+                    <img width="500" src="https://bigspring-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fservice-slide-1.png&w=1200&q=75" alt="">
+                </div>
+                <div class="slider2">
+                    <img width="500" src="https://bigspring-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fservice-slide-2.png&w=1200&q=75" alt="">
+                </div>
+                <div class="slider2">
+                    <img width="500" src="https://bigspring-light-nextjs.vercel.app/_next/image?url=%2Fimages%2Fservice-slide-3.png&w=1200&q=75" alt="">
+                </div>
+                <div style="text-align:center">
+                    <span class="dot2"></span>
+                    <span class="dot2"></span>
+                    <span class="dot2"></span>
+                  </div>
+            </div>
             <div class="firth-div">
                 <h1 style="font-size: 30px;">It is a privately owned Information and cyber security company</h1>
                 <p style="color: gray;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat.</p>
@@ -273,8 +322,48 @@
         <hr>
         <p style="color: gray; margin: auto; width: 350px; padding: 20px;">Designed and Developed By Themefisher</p>
     </footer>
-    <script>
 
+    <script>
+        let slideIndex = 0;
+        let slideIndex2 = 0;
+        showSlides();
+        showSlides2();
+
+        function showSlides() {
+            let i;
+            const slides = document.getElementsByClassName('slider');
+            const dots = document.getElementsByClassName('dot');
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].addClass += "active";
+            setTimeout(showSlides, 2000);
+        }
+
+        function showSlides2() {
+            let i;
+            const slides2 = document.getElementsByClassName('slider2');
+            const dots2 = document.getElementsByClassName('dot2');
+
+            for (i = 0; i < slides2.length; i++) {
+                slides2[i].style.display = "none";  
+            }
+            slideIndex2++;
+            if (slideIndex > slides2.length) {slideIndex = 1}
+            for (i = 0; i < dots2.length; i++) {
+                dots2[i].className = dots2[i].className.replace(" active", "");
+            }
+            slides2[slideIndex-1].style.display = "block";
+            dots2[slideIndex-1].addClass += "active";
+            setTimeout(showSlides, 2000);
+        }
     </script>
 </body>
 </html>
